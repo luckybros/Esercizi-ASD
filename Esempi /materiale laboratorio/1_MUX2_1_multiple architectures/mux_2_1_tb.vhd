@@ -33,13 +33,13 @@ architecture mux2_1 of mux_2_1_tb is
 		
 		wait for 100 ns;
 		
-		input 	<= "01"; -- visto che control='U' in uscita c'è ancora 'U'
+		input 	<= "01"; -- visto che control='U' in uscita c'ï¿½ ancora 'U'
 		wait for 10 ns; 
 
 		control <= '1';   -- in uscita va a1='1' 
 		
 		wait for 5 ns; 
-		input 	<= "00"; -- in uscita va ancora a1, che stavolta è '0' 
+		input 	<= "00"; -- in uscita va ancora a1, che stavolta ï¿½ '0' 
 		
 		wait for 5 ns; 
 		input 	<= "10"; -- in uscita va ancora a1='0' 

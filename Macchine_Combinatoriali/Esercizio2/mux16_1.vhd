@@ -2,14 +2,14 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.all;
 
-entity mux161 is
+entity mux16_1 is
     port(   c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, 
         c13, c14, c15, t0, t1, t2, t3   :   in STD_LOGIC; 
             y1  :   out STD_LOGIC;
     );
-end mux161;
+end mux16_1;
 
-architecture structural of mux161 is
+architecture structural of mux16_1 is
     signal u0, u1, u2, u3 :  STD_LOGIC;
 
     component mux21 is 
