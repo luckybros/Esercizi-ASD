@@ -3,9 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 use work.all;
 
 entity rom is 
-    port(
-        address : in std_logic_vector(3 downto 0);
-        out_value : out std_logic_vector(7 downto 0) 
+    port(   address : in std_logic_vector(3 downto 0);
+            out_value : out std_logic_vector(7 downto 0) 
     );
 end entity rom;
 
