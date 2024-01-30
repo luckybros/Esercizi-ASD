@@ -13,4 +13,3 @@ architecture dataflow of mux21 is
     begin
         y <= ((a0 AND (NOT s)) OR (a1 AND s));
 end dataflow;
-
