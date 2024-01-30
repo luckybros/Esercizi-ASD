@@ -6,7 +6,7 @@ entity riconoscitore_di_sequenza is
     port(   data : in STD_LOGIC;    
             clock : in STD_LOGIC;
             mode : in STD_LOGIC;
-            out_value : out STD_LOGIC;
+            out_value : out STD_LOGIC
     );
 end riconoscitore_di_sequenza;
 
