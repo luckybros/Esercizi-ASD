@@ -17,7 +17,7 @@ architecture behavioural of mux161_tb is
     signal dataout : STD_LOGIC := 'U';
 
     begin
-        uut : mux161
+       dut : mux161
         port map(
             c0 => datain(0),
             c1 => datain(1),
