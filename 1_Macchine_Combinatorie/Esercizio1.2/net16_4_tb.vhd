@@ -6,10 +6,10 @@ end net16_4_tb;
 
 architecture behavioural of net16_4_tb is
     component net16_4 is
-        port(   a : in STD_LOGIC_VECTOR(15 downto 0);
-                s_mux : in STD_LOGIC_VECTOR(3 downto 0);
-                s_demux : in STD_LOGIC_VECTOR(1 downto 0);
-                y : out STD_LOGIC_VECTOR(3 downto 0)
+        port(   net16_4_a : in STD_LOGIC_VECTOR(15 downto 0);
+                net16_4_s_mux : in STD_LOGIC_VECTOR(3 downto 0);
+                net16_4_s_demux : in STD_LOGIC_VECTOR(1 downto 0);
+                net16_4_y : out STD_LOGIC_VECTOR(3 downto 0)
         );
     end component;
 
@@ -18,25 +18,25 @@ architecture behavioural of net16_4_tb is
     signal selection_demux : STD_LOGIC_VECTOR(1 downto 0) := (others => 'U');
     signal dataout : STD_LOGIC_VECTOR(3 downto 0) := (others => 'U');
 
-    begin
-        uut : net16_4
-        port map(
-            a => datain,
-            s_mux => selection_mux,
-            s_demux => selection_demux,
-            y => dataout
-        );
+begin
+    uut : net16_4
+    port map(
+        net16_4_a => datain,
+        net16_4_s_mux => selection_mux,
+        net16_4_s_demux => selection_demux,
+        net16_4_y => dataout
+    );
 
-        stim_proc : process
-        begin 
-            wait for 10 ns;
-            datain <= "1001000100001001";
-            wait for 10 ns;
-            selection_mux <= "0011"; -- il terzo bit che vale 1.
-            wait for 10 ns;
-            selection_demux <= "00"; -- esce 1 sul primo filo.
-            wait for 10 ns;
-            wait;
-        end process;
+    stim_proc : process
+    begin 
+        wait for 10 ns;
+        datain <= "1001000100001001";
+        wait for 10 ns;
+        selection_mux <= "0011"; -- il terzo bit che vale 1.
+        wait for 10 ns;
+        selection_demux <= "00"; -- esce 1 sul primo filo.
+        wait for 10 ns;
+        wait;
+    end process;
 
 end behavioural;
