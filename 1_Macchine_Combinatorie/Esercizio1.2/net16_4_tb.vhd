@@ -34,7 +34,7 @@ begin
         wait for 10 ns;
         selection_mux <= "0011"; -- il terzo bit che vale 1.
         wait for 10 ns;
-        selection_demux <= "00"; -- esce 1 sul primo filo.
+        selection_demux <= "01"; -- esce 2 sul primo filo.
         wait for 10 ns;
         wait;
     end process;
