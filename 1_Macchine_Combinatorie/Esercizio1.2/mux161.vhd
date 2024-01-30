@@ -15,8 +15,8 @@ architecture structural of mux161 is
             b1 : in STD_LOGIC;
             b2 : in STD_LOGIC;
             b3 : in STD_LOGIC;
-            s : in STD_LOGIC;
-            s' : in STD_LOGIC;
+            w0 : in STD_LOGIC;
+            w1 : in STD_LOGIC;
             y0  : out STD_LOGIC
     );
     end component;
@@ -27,8 +27,8 @@ architecture structural of mux161 is
                   b1 => c1,
                   b2 => c2,
                   b3 => c3,
-                  s => s0,
-                  s' => s1,
+                  w0 => s0,
+                  w1 => s1,
                   y0 => u0
         );
     mux1: mux41
@@ -36,8 +36,8 @@ architecture structural of mux161 is
                   b1 => c5,
                   b2 => c6,
                   b3 => c7,
-                  s => s0,
-                  s' => s1,
+                  w0 => s0,
+                  w1 => s1,
                   y0 => u1
         );
     mux2: mux41
@@ -45,8 +45,8 @@ architecture structural of mux161 is
                   b1 => c9,
                   b2 => c10,
                   b3 => c11,
-                  s => s0,
-                  s' => s1,
+                  w0 => s0,
+                  w1 => s1,
                   y0 => u2
         );
     mux3: mux41
@@ -54,8 +54,8 @@ architecture structural of mux161 is
                   b1 => c13,
                   b2 => c14,
                   b3 => c15,
-                  s => s0,
-                  s' => s1,
+                  w0 => s0,
+                  w1 => s1,
                   y0 => u3
         );
     mux4: mux41
@@ -63,8 +63,8 @@ architecture structural of mux161 is
                   b1 => u1,
                   b2 => u2,
                   b3 => u3,
-                  s => s2,
-                  s' => s3,
+                  w0 => s2,
+                  w1 => s3,
                   y0 => y1
         );
 end structural;
