@@ -1,20 +1,23 @@
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.std_logic_1164.ALL;
 use work.all;
 
-entity flip_flop_d is
-    port(   data, clock : in STD_LOGIC;
-            uscita : out STD_LOGIC;
+entity flipflopD is
+    port(
+        ck   : in STD_LOGIC;
+        d    : in STD_LOGIC;
+        q    : out STD_LOGIC
     );
-end flip_flop_d;
+end flipflopD;
 
-architecture dataflow of flip_flop_d is
-
-    process(clock)
-    begin 
-        if rising_edge(clock) then 
-            uscita <= data;
+architecture dataflow of flipflopD is
+begin
+    process (ck)
+    begin
+        if rising_edge(ck) then
+            q <= d;
         end if;
     end process;
-
 end dataflow;
+
+
