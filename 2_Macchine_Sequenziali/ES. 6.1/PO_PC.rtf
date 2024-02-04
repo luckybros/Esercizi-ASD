@@ -1,0 +1,115 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red70\green137\blue204;
+\red255\green255\blue255;\red67\green192\blue160;\red167\green197\blue152;\red202\green202\blue202;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0\c0;\cssrgb\c33725\c61176\c83922;
+\cssrgb\c100000\c100000\c100000;\cssrgb\c30588\c78824\c69020;\cssrgb\c70980\c80784\c65882;\cssrgb\c83137\c83137\c83137;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 library\strokec5  IEEE;\
+\strokec4 use\strokec5  IEEE.std_logic_1164.\strokec4 ALL\strokec5 ;\
+\strokec4 use\strokec5  IEEE.numeric_std.\strokec4 ALL\strokec5 ;\
+\
+\strokec4 entity\strokec5  \strokec6 PO_PC\strokec5  \strokec4 is\strokec5 \
+    \strokec4 port\strokec5  (\
+        clock : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+        reset : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+        inizio : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+        fine : \strokec4 out\strokec5  \strokec6 std_logic\strokec5 \
+    );\
+\strokec4 end\strokec5  \strokec6 PO_PC\strokec5 ;\
+\
+\strokec4 architecture\strokec5  \strokec6 structural\strokec5  \strokec4 of\strokec5  \strokec6 PO_PC\strokec5  \strokec4 is\strokec5 \
+\
+    \strokec4 signal\strokec5  fine_conteggio : \strokec6 std_logic\strokec5 ;\
+    \strokec4 signal\strokec5  lettura : \strokec6 std_logic\strokec5 ;\
+    \strokec4 signal\strokec5  scrittura : \strokec6 std_logic\strokec5 ;\
+    \strokec4 signal\strokec5  abilitazione_contatore : \strokec6 std_logic\strokec5 ;\
+    \strokec4 signal\strokec5  reset_contatore : \strokec6 std_logic\strokec5 ;\
+    \strokec4 signal\strokec5  indirizzo : \strokec6 std_logic_vector\strokec5 (\strokec7 3\strokec5  \strokec4 downto\strokec5  \strokec7 0\strokec5 );\
+    \strokec4 signal\strokec5  dato : \strokec6 std_logic_vector\strokec5 (\strokec7 3\strokec5  \strokec4 downto\strokec5  \strokec7 0\strokec5 );\
+\
+    \strokec4 component\strokec5  \strokec6 s_system\strokec5  \strokec4 is\strokec5 \
+        \strokec4 port\strokec5  (\
+            in_system : \strokec4 in\strokec5  \strokec6 std_logic_vector\strokec5 (\strokec7 3\strokec5  \strokec4 downto\strokec5  \strokec7 0\strokec5 );\
+            clk_system : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+            rd_system : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+            out_system : \strokec4 out\strokec5  \strokec6 std_logic_vector\strokec5 (\strokec7 3\strokec5  \strokec4 downto\strokec5  \strokec7 0\strokec5 )\
+        );\
+    \strokec4 end\strokec5  \strokec4 component\strokec5 ;\
+\
+    \strokec4 component\strokec5  \strokec6 mem\strokec5  \strokec4 is\strokec5  \
+        \strokec4 port\strokec5  (\
+            address_mem : \strokec4 in\strokec5  \strokec6 std_logic_vector\strokec5 (\strokec7 3\strokec5  \strokec4 downto\strokec5  \strokec7 0\strokec5 );\
+            data : \strokec4 in\strokec5  \strokec6 std_logic_vector\strokec5 (\strokec7 3\strokec5  \strokec4 downto\strokec5  \strokec7 0\strokec5 );\
+            clk_mem : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+            wrt : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 \
+        );\
+    \strokec4 end\strokec5  \strokec4 component\strokec5 ;\
+\
+    \strokec4 component\strokec5  \strokec6 counter_mod_16\strokec5  \strokec4 is\strokec5  \
+        \strokec4 port\strokec5  (\
+            clk_ctr, rst_ctr, en_ctr : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+            curr_value : \strokec4 out\strokec5  \strokec6 std_logic_vector\strokec5 (\strokec7 3\strokec5  \strokec4 downto\strokec5  \strokec7 0\strokec5 );\
+            out_ctr : \strokec4 out\strokec5  \strokec6 std_logic\strokec5 \
+        );\
+    \strokec4 end\strokec5  \strokec4 component\strokec5 ;\
+\
+    \strokec4 component\strokec5  \strokec6 control_unit\strokec5  \strokec4 is\strokec5 \
+        \strokec4 port\strokec5  (\
+            start   : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+            clk_cu  : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+            end_count  : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+            rst_cu  : \strokec4 in\strokec5  \strokec6 std_logic\strokec5 ;\
+            rd_cu   : \strokec4 out\strokec5  \strokec6 std_logic\strokec5 ;\
+            wrt_cu  : \strokec4 out\strokec5  \strokec6 std_logic\strokec5 ;\
+            en_cu   : \strokec4 out\strokec5  \strokec6 std_logic\strokec5 ;\
+            rst_ctr : \strokec4 out\strokec5  \strokec6 std_logic\strokec5 ;\
+            end_cu :  \strokec4 out\strokec5  \strokec6 std_logic\strokec5 \
+        );\
+    \strokec4 end\strokec5  \strokec4 component\strokec5 ;\
+\
+\strokec4 begin\strokec5 \
+    cu0: \strokec4 control_unit\strokec5 \
+        \strokec4 port\strokec5  \strokec4 map\strokec5 (\
+            start \strokec8 =>\strokec5  inizio,\
+            clk_cu \strokec8 =>\strokec5  clock,\
+            end_count \strokec8 =>\strokec5  fine_conteggio,\
+            rst_cu \strokec8 =>\strokec5  reset,\
+            rd_cu \strokec8 =>\strokec5  lettura,\
+            wrt_cu \strokec8 =>\strokec5  scrittura,\
+            en_cu \strokec8 =>\strokec5  abilitazione_contatore,\
+            rst_ctr \strokec8 =>\strokec5  reset_contatore,\
+            end_cu \strokec8 =>\strokec5  fine\
+        );\
+\
+    ctr0 : \strokec4 counter_mod_16\strokec5 \
+        \strokec4 port\strokec5  \strokec4 map\strokec5 (\
+            clk_ctr \strokec8 =>\strokec5  clock, \
+            rst_ctr \strokec8 =>\strokec5  reset_contatore, \
+            en_ctr \strokec8 =>\strokec5  abilitazione_contatore,\
+            curr_value \strokec8 =>\strokec5  indirizzo,\
+            out_ctr \strokec8 =>\strokec5  fine_conteggio\
+        );\
+\
+    s_system0: \strokec4 s_system\strokec5 \
+        \strokec4 port\strokec5  \strokec4 map\strokec5 (\
+            in_system \strokec8 =>\strokec5  indirizzo,\
+            clk_system \strokec8 =>\strokec5  clock,\
+            rd_system \strokec8 =>\strokec5  lettura,\
+            out_system \strokec8 =>\strokec5  dato\
+        );\
+\
+    mem0 : \strokec4 mem\strokec5 \
+        \strokec4 port\strokec5  \strokec4 map\strokec5 (\
+            address_mem \strokec8 =>\strokec5  indirizzo,\
+            data \strokec8 =>\strokec5  dato,\
+            clk_mem \strokec8 =>\strokec5  clock,\
+            wrt \strokec8 =>\strokec5  scrittura \
+        );\
+\strokec4 end\strokec5  \strokec6 structural\strokec5 ;\
+\
+}
