@@ -1,12 +1,12 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use work.all
+use work.all;
 
 entity mux21 is 
     port(   a0  :   in STD_LOGIC;
             a1  :   in STD_LOGIC;
             s   :   in STD_LOGIC;
-            y   :   out STD_LOGIC;
+            y   :   out STD_LOGIC
     );
 end mux21;
 

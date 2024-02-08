@@ -43,24 +43,24 @@ begin
     stimulus_process: process
     begin
         rst <= '1'; -- Reset attivo basso
-        wait for 10 ns;
+        wait for 100 ns;
         rst <= '0'; -- Rilascia il reset
         wait for 10 ns;
 
         -- Esempio di sequenza di input
-        datain <= '1'; 
+        datain <= '1'; --10000000
         sel <= "00"; 
         wait for 10 ns;
 
-        datain <= '0'; 
+        datain <= '0'; --00100000
         sel <= "01"; 
         wait for 10 ns;
 
-        datain <= '1'; 
+        datain <= '1'; --01000001
         sel <= "10"; 
         wait for 10 ns;
 
-        datain <= '0'; 
+        datain <= '0'; --00000100
         sel <= "11"; 
         wait for 10 ns;
 

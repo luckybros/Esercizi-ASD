@@ -2,15 +2,15 @@ library IEEE;
 use IEEE.std_logic_1164.ALL;
 use work.all;
 
-entity flipflopD is
+entity flipflopd is
     port(
         ck   : in STD_LOGIC;
         d    : in STD_LOGIC;
         q    : out STD_LOGIC
     );
-end flipflopD;
+end flipflopd;
 
-architecture dataflow of flipflopD is
+architecture dataflow of flipflopd is
 begin
     process (ck)
     begin
@@ -19,5 +19,3 @@ begin
         end if;
     end process;
 end dataflow;
-
-
