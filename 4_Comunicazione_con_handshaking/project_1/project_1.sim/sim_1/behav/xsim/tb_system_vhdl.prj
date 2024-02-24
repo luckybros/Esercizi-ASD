@@ -1,0 +1,17 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../counter_mod_16.vhd" \
+"../../../../../mem_B.vhd" \
+"../../../../../memoria_A.vhd" \
+"../../../../../memoria_B.vhd" \
+"../../../../../nodo_A.vhd" \
+"../../../../../nodo_B.vhd" \
+"../../../../../system.vhd" \
+"../../../../../unita_operativa_A.vhd" \
+"../../../../../unita_operativa_B.vhd" \
+"../../../../../unitacontrollo_A.vhd" \
+"../../../../../unitacontrollo_B.vhd" \
+"../../../../../system_tb.vhd" \
+
+# Do not sort compile order
+nosort
