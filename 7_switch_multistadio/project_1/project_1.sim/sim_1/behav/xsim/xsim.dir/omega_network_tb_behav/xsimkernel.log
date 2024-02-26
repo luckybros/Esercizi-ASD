@@ -1,0 +1,7 @@
+Running: xsim.dir/omega_network_tb_behav/xsimk.exe -simmode gui -wdb omega_network_tb_behav.wdb -simrunnum 0 -socket 61390
+Design successfully loaded
+Design Loading Memory Usage: 7256 KB (Peak: 7256 KB)
+Design Loading CPU Usage: 46 ms
+Simulation completed
+Simulation Memory Usage: 7688 KB (Peak: 7688 KB)
+Simulation CPU Usage: 61 ms

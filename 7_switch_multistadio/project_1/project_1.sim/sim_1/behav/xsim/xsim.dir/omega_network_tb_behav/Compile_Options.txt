@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "omega_network_tb_behav" "xil_defaultlib.omega_network_tb" -log "elaborate.log" 
