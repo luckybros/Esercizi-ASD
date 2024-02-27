@@ -13,7 +13,7 @@ end sistema;
 architecture structural of sistema is 
     signal ingresso_sel : std_logic_vector(15 downto 0);
 
-    component rete_di_controllo is 
+    component unita_di_controllo is 
         port(   switch_in : in std_logic_vector(7 downto 0);
                 buttons : in std_logic_vector(1 downto 0);
                 switch_out : out std_logic_vector(15 downto 0)
@@ -29,7 +29,7 @@ architecture structural of sistema is
     end component;
 
 begin 
-    rete_di_controllo : unita
+    unita_di_controllo : unita
         port map (  switch_in => ingresso, 
                     buttons => bottoni,
                     switch_out => ingresso_sel

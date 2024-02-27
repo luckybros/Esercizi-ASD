@@ -1,14 +1,14 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity rete_di_controllo is 
+entity unita_di_controllo is 
     port(   switch_in : in std_logic_vector(7 downto 0);
             buttons : in std_logic_vector(1 downto 0);
             switch_out : out std_logic_vector(15 downto 0)
     );
-end rete_di_controllo;
+end unita_di_controllo;
 
-architecture behavioral of rete_di_controllo is
+architecture behavioral of unita_di_controllo is
     signal temp : std_logic_vector(15 downto 0) := (others => '0');
 
 begin 
