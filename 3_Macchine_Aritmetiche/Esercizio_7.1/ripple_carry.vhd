@@ -28,4 +28,4 @@ architecture structural of ripple_carry is
 			
 	RA7: full_adder port map(X(7), Y(7), temp(6), c_out, Z(7));
 	
-	end structural;
+end structural;

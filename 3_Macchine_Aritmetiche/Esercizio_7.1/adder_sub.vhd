@@ -26,6 +26,4 @@ architecture structural of adder_sub is
 				   
 	RA: ripple_carry port map(X, complementoy, cin, cout, Z);
 	
-	end structural;
-	
-	
+end structural;

@@ -15,18 +15,18 @@ architecture behavioural of cont_mod8 is
 	begin	
 	CM8: process(clock)
 	begin
-		if(clock'event and clock='1') then 
+		if(rising_edge(clock)) then 
 		
-		   if(reset='1') then 
+		   	if(reset='1') then 
 			   c <= (others=>'0');
-		   else 
-		       if(count_in = '1') then
+		   	else 
+		       	if(count_in = '1') then
 			      c <= std_logic_vector(unsigned(c) + 1);
 			      -- c <= c + "111"; posso fare direttamente questa somma se importo IEEE.std_logic_unisigned.ALL
-			      -- è preferibile non farlo perchè sono package non standard
-		       end if;
-		   end if;
-		 end if;
+			      -- ï¿½ preferibile non farlo perchï¿½ sono package non standard
+		       	end if;
+		   	end if;
+		end if;
 	end process;
 	
 	count <= c;

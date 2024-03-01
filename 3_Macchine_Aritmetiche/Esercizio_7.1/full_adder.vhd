@@ -16,4 +16,4 @@ architecture rtl of full_adder is
 	s<= a xor b xor cin;
 	cout<= (a and b) or (cin and (a xor b));
 	
-	end rtl;
+end rtl;

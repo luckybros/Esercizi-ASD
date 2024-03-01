@@ -13,7 +13,7 @@ architecture behavioural of registro8 is
 	
 	R_PP: process(clk)
 		begin
-		if(clk'event and clk='1') then
+		if(rising_edge(clk)) then
 		  if(res='1') then
 			 temp_b<= (others=>'0');		   
 		  else

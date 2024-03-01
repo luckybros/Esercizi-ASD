@@ -7,6 +7,7 @@ entity PO_PC is
         clock : in std_logic;
         reset : in std_logic;
         inizio : in std_logic;
+        uscita : out std_logic_vector(3 downto 0);
         fine : out std_logic
     );
 end PO_PC;
@@ -33,7 +34,7 @@ architecture structural of PO_PC is
     component mem is 
         port (
             address_mem : in std_logic_vector(3 downto 0);
-            data : in std_logic_vector(3 downto 0);
+            data : inout std_logic_vector(3 downto 0);
             clk_mem : in std_logic;
             wrt : in std_logic
         );
@@ -96,6 +97,7 @@ begin
         port map(
             address_mem => indirizzo,
             data => dato,
+            data => uscita,
             clk_mem => clock,
             wrt => scrittura 
         );
