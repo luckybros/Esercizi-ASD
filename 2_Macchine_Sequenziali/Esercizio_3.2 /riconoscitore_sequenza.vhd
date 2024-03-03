@@ -6,6 +6,8 @@ entity riconoscitore_sequenza is
     port(   i : in STD_LOGIC;
             m : in STD_LOGIC;
             a : in STD_LOGIC;
+            button_i: in STD_LOGIC;
+            button_m: in STD_LOGIC;
             y : out STD_LOGIC
     );
 end riconoscitore_sequenza;
@@ -14,12 +16,13 @@ architecture behavioural of riconoscitore_sequenza is
     type stato is (q0, q1, q2, q3, q4);
     signal stato_corrente : stato := q0;
     signal stato_prossimo : stato;
+    signal temp_m: std_logic;
     signal uscita_corrente : STD_LOGIC := 'U';
 
 begin
     calcolo_transizione : process(m, i, stato_corrente)
     begin
-        case m is
+        case temp_m is
             when '0' =>
                 case stato_corrente is
                     when q0 => 
@@ -91,10 +94,14 @@ begin
     tempificazione : process(a)
     begin
         if rising_edge(a) then
-            stato_corrente <= stato_prossimo;
-            y <= uscita_corrente;
+            if(button_i = '1') then
+                stato_corrente <= stato_prossimo;
+                y <= uscita_corrente;
+            end if;
+            if(button_m = '1') then 
+                temp_m <= m;
+            end if;
         end if;
     end process;
 
 end behavioural;
-

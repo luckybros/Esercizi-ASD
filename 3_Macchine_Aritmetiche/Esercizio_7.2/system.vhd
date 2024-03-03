@@ -16,8 +16,6 @@ architecture structural of system is
 
     begin 
 
-        reset_n <= not reset_system;
-
         debouncer_start : entity work.ButtonDebouncer
         generic map(    CLK_period => 10, 
                         btn_noise_time => 10000000)
@@ -27,7 +25,16 @@ architecture structural of system is
                         BTN => start_system,
                         CLEARED_BTN => start_n 
                 );
-                
+        debouncer_reset : entity work.ButtonDebouncer
+        generic map(    CLK_period => 10, 
+                        btn_noise_time => 10000000)
+        
+        port map(       RST => '0', 
+                        CLK => clock_system,    
+                        BTN => reset_system,
+                        CLEARED_BTN => reset_n 
+                );         
+
         molt : entity work.molt_booth
         port map(       clock => clock_system, 
                         reset => reset_system,
