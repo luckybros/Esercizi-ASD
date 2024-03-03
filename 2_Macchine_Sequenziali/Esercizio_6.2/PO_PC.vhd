@@ -97,9 +97,10 @@ begin
         port map(
             address_mem => indirizzo,
             data => dato,
-            data => uscita,
             clk_mem => clock,
             wrt => scrittura 
         );
+        
+     uscita <= dato;
 end structural;
 

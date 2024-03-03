@@ -11,6 +11,7 @@ architecture dataflow of PO_PC_tb is
     signal clk : std_logic := '0';
     signal rst : std_logic := '0';
     signal start : std_logic := '0';
+    signal uscita_tb : std_logic_vector(3 downto 0); 
     signal fine_processo : std_logic;
 
     constant clock_period : time := 10 ns;
@@ -21,6 +22,7 @@ architecture dataflow of PO_PC_tb is
             clock   => clk,
             reset   => rst,
             inizio  => start,
+            uscita  => uscita_tb,
             fine    => fine_processo
         );
 
