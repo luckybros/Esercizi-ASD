@@ -38,6 +38,7 @@ architecture structural of system is
         molt : entity work.molt_booth
         port map(       clock => clock_system, 
                         reset => reset_system,
+                        start => start_n,
                         X => X_system,
                         Y => Y_system,
                         product => product_system,
