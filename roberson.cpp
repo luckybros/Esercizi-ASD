@@ -27,4 +27,6 @@ int main() {
     A[2:0] = A[3:1];
     A[3] = F;
 
+    output = A merge Q;
+
 }

@@ -27,6 +27,7 @@ architecture behavioural of cont_mod_n is
 		if(load = '1') then 
 			c(N-1 downto 0) <= init;
 		end if;
+		
 		if(rising_edge(clock)) then 
 			if(temp_end = '1') then
 				temp_end <= '0';
@@ -35,7 +36,7 @@ architecture behavioural of cont_mod_n is
 			   c <= (others=>'0');
 		   	else 
 		       	if(count_in = '1') then
-			    	c <= std_logic_vector(unsigned(c) + 1);
+			    	c <= std_logic_vector(unsigned(c) + 1); -- rende c unsigned, lo incrementa e lo trasforma in vettore
 					if(c = std_logic_vector(to_unsigned(max, c'length))) then
 						c <= (others => '0');
 						temp_end <= '1';
@@ -48,4 +49,4 @@ architecture behavioural of cont_mod_n is
 	count <= c(N-1 downto 0);
 	y <= temp_end;
 	
-	end behavioural;
+end behavioural;
