@@ -29,7 +29,7 @@ begin
 
     comb: process(current_state, start, count)
     begin
-        count_in <= '0'; --inizializzazione dei segnali di input.
+        count_in <= '0'; --inizializzazione dei segnali di input
         subtract <= '0';
         selAQ <= '0';
         loadAQ <= '0';  
