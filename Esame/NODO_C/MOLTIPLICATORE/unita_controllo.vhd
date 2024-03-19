@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity unita_controllo is 
     port( q : in std_logic_vector(1 downto 0);
           clock, reset, start: in std_logic;
-          count: in std_logic_vector(2 downto 0);
+          count: in std_logic_vector(1 downto 0);
           loadM, count_in, loadAQ, en_shift: out std_logic;
           selAQ, subtract, stop_cu: out std_logic
     ); 
@@ -71,8 +71,8 @@ begin
 
             when rshift =>                      
                 en_shift <= '1';
-                if(count = "111") then -- fine conteggio quando abbiamo eseguito 
-				--8 volte le operazioni.
+                if(count = "11") then -- fine conteggio quando abbiamo eseguito 
+				--4 volte le operazioni.
                     next_state <= fine;
                 else
                     next_state <= increment;
