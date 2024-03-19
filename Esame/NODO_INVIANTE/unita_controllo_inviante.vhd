@@ -2,13 +2,13 @@ library IEEE;
 use IEEE.std_logic_1164.ALL;
 use work.all;
 
-entity unita_controllo_a is
-    port(   init_a : in std_logic;
-            clk_cu_a : in std_logic;
-            rst_cu_a : in std_logic;
+entity unita_controllo_inviante is
+    port(   init_inviante : in std_logic;
+            clk_cu_inviante : in std_logic;
+            rst_cu_inviante : in std_logic;
 
             -- ROM A
-            read_a : out std_logic;
+            read_inviante : out std_logic;
 
             -- CONTATORE.
             count : in std_logic_vector(2 downto 0);
@@ -18,18 +18,18 @@ entity unita_controllo_a is
             accepted : in std_logic;
             data_ready : out std_logic
     );
-end unitacontrollo_A;
+end unitacontrollo_inviante;
 
-architecture structural of unitacontrollo_A is
+architecture structural of unitacontrollo_inviante is
     type state is(IDLE, READ_DATA, WAIT_ACK, WAIT_ELAB, INCR_COUNT);
     signal current_state, next_state : state;
 
     begin 
 
-        reg_stato: process(clk_cu_A) 
+        reg_stato: process(clk_cu_inviante) 
         begin
-            if(clk_cu_A'event and clk_cu_A='1') then
-                if(rst_cu_A='1') then 
+            if(clk_cu_inviante'event and clk_cu_inviante='1') then
+                if(rst_cu_inviante='1') then 
                     current_state <= IDLE;
                 else 
                     current_state <= next_state;
@@ -42,7 +42,7 @@ architecture structural of unitacontrollo_A is
 
             case current_state is
                 when IDLE =>
-                    read_a <= '0';
+                    read_inviante <= '0';
                     en_ctr <= '0';
                     data_ready <= '0';
                     if(init = '1') then
@@ -53,12 +53,12 @@ architecture structural of unitacontrollo_A is
                 
                 when READ_DATA =>
                     en_ctr <= '0';
-                    read_a <= '1';
+                    read_inviante <= '1';
                     data_ready <= '1';
                     next_state <= WAIT_ACK;
 
                 when WAIT_ACK =>
-                    read_a <= '0';
+                    read_inviante <= '0';
                     if(accepted = '1') then
                         data_ready <= '0';
                         next_state <= WAIT_ELAB;
