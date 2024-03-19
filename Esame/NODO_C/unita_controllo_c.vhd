@@ -21,9 +21,9 @@ entity unita_controllo_c is
             data_ready_a : in std_logic;
             data_ready_b : in std_logic;
 
-            --MACHINA ARITMETICA 
-            end_m : in std_logic;
+            --MACCHINA ARITMETICA 
             start_m : out std_logic;
+            end_m : in std_logic;
     );
 end unita_controllo_c;
 
