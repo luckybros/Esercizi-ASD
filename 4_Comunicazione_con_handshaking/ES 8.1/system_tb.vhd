@@ -10,7 +10,6 @@ architecture testbench of tb_system is
     signal start_tb : std_logic := '0';
     signal clock_tb : std_logic := '0';
     signal reset_tb : std_logic := '0';
-    --signal data_out_tb : std_logic_vector(7 downto 0);
 
     constant clock_period : time := 10 ns; -- Adjust as needed
 
@@ -29,13 +28,11 @@ architecture testbench of tb_system is
                 start => start_tb,
                 clock => clock_tb,
                 reset => reset_tb
-                --data_out => data_out_tb
             );
 
-    -- Clock process
     process
     begin
-        while now < 1000 ns  -- Simulation time, adjust as needed
+        while now < 1000 ns
             loop
                 clock_tb <= not clock_tb;
                 wait for clock_period / 2;

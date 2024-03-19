@@ -3,7 +3,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity system_tb is
--- Testbench doesn't have ports.
 end system_tb;
 
 architecture tb of system_tb is
