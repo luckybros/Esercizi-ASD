@@ -12,13 +12,13 @@ entity unita_operativa_c is
           X_uo_c : in std_logic_vector(3 downto 0);
           Y_uo_c : in std_logic_vector(3 downto 0);
           cnt_uo_c : out std_logic_vector(2 downto 0);
+          end_uo_c : out std_logic;
     );
 end unita_operativa_c;
 
 architecture structural of unita_operativa_c is
     signal temp_address : std_logic_vector(2 downto 0);
     signal temp_out : std_logic_vector(3 downto 0);
-    signal temp_sum : std_logic_vector(7 downto 0) := "UUUUUUUU";
 
     component mem_c is 
         port(
@@ -65,9 +65,10 @@ architecture structural of unita_operativa_c is
                         start_mac => start_uo_c,
                         X_mac => X_uo_c,
                         Y_mac => Y_uo_c,
-                        Z_mac => temp_out
+                        Z_mac => temp_out,
+                        fin_mac => end_uo_c
             );
 
-    
-
+        cnt_uo_c <= temp_address;
+        
 end structural; 
